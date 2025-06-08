@@ -7,8 +7,9 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Send } from "lucide-react"
+import { Mail, Send, MapPin, Clock } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import emailjs from "@emailjs/browser"
 
 export default function Contact() {
   const { ref, inView } = useInView({
@@ -38,93 +39,103 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulando envio do formulário
-    setTimeout(() => {
+    try {
+      // Configuração do EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: "Isaac",
+        reply_to: formData.email,
+      }
+
+      // Enviar o email usando EmailJS
+      // Você precisará substituir estes IDs pelos seus próprios do EmailJS
+      const response = await emailjs.send(
+        "service_emailjs", // ID do serviço (você precisará criar)
+        "template_contact", // ID do template (você precisará criar)
+        templateParams,
+        "YOUR_PUBLIC_KEY", // Chave pública do EmailJS (você precisará obter)
+      )
+
+      if (response.status === 200) {
+        toast({
+          title: "Mensagem enviada!",
+          description: "Obrigado pelo contato. Responderei em breve.",
+        })
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        throw new Error("Falha ao enviar mensagem")
+      }
+    } catch (error) {
+      console.error("Erro ao enviar email:", error)
       toast({
-        title: "Mensagem enviada!",
-        description: "Obrigado pelo contato. Responderei em breve.",
+        title: "Erro ao enviar",
+        description: "Houve um problema ao enviar sua mensagem. Tente novamente mais tarde.",
+        variant: "destructive",
       })
-      setFormData({ name: "", email: "", message: "" })
+    } finally {
       setIsSubmitting(false)
-    }, 1500)
+    }
   }
 
   if (!mounted) return null
 
   return (
     <section id="contact" className="section bg-secondary/30" ref={ref}>
-      <h2 className="section-heading">
-        <Mail className="h-6 w-6 text-primary" /> Contato
-      </h2>
-      <div className={`grid md:grid-cols-2 gap-8 ${inView ? "animate-in" : "opacity-0"}`}>
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Vamos conversar!</h3>
-          <p className="mb-6">
-            Estou sempre aberto a novas oportunidades, parcerias e projetos interessantes. Se você tem uma ideia ou
-            apenas quer bater um papo sobre tecnologia, empreendedorismo ou inovação, entre em contato!
-          </p>
-          <div className="space-y-2">
-            <p className="flex items-center gap-2">
-              <Mail className="h-5 w-5 text-primary" />
-              <a href="mailto:isaac.dev.contato@gmail.com" className="hover:text-primary transition-colors">
-                isaac.dev.contato@gmail.com
-              </a>
-            </p>
+      <div className="text-center mb-12">
+        <h2 className="section-heading justify-center">
+          <Mail className="h-6 w-6 text-primary" /> Contato
+        </h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Vamos transformar suas ideias em realidade! Entre em contato para discutir projetos, parcerias ou apenas para
+          trocar uma ideia sobre tecnologia.
+        </p>
+      </div>
+
+      <div className={`max-w-6xl mx-auto ${inView ? "animate-in" : "opacity-0"}`}>
+        {/* Cards de contato */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-background/50 backdrop-blur-sm rounded-lg p-6 text-center border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105">
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Mail className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold mb-2">Email</h3>
+            <a
+              href="mailto:isaac.dev.contato08@gmail.com"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              isaac.dev.contato08@gmail.com
+            </a>
+          </div>
+
+          <div className="bg-background/50 backdrop-blur-sm rounded-lg p-6 text-center border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105">
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <MapPin className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold mb-2">Localização</h3>
+            <p className="text-sm text-muted-foreground">Fortaleza - CE, Brasil</p>
+          </div>
+
+          <div className="bg-background/50 backdrop-blur-sm rounded-lg p-6 text-center border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105">
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Clock className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold mb-2">Resposta</h3>
+            <p className="text-sm text-muted-foreground">Até 24 horas</p>
           </div>
         </div>
-        <div>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block mb-2 text-sm font-medium">
-                Nome
-              </label>
-              <Input
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                placeholder="Seu nome"
-              />
+
+
+            <div className="mt-6 pt-6 border-t border-border/50 text-center">
+              <p className="text-sm text-muted-foreground">
+                Ou entre em contato diretamente pelo email:{" "}
+                <a href="mailto:isaac.dev.contato08@gmail.com" className="text-primary hover:underline font-medium">
+                  isaac.dev.contato08@gmail.com
+                </a>
+              </p>
             </div>
-            <div>
-              <label htmlFor="email" className="block mb-2 text-sm font-medium">
-                Email
-              </label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                placeholder="seu.email@exemplo.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block mb-2 text-sm font-medium">
-                Mensagem
-              </label>
-              <Textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                placeholder="Sua mensagem..."
-                rows={5}
-              />
-            </div>
-            <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? (
-                "Enviando..."
-              ) : (
-                <>
-                  <Send className="h-4 w-4 mr-2" /> Enviar Mensagem
-                </>
-              )}
-            </Button>
-          </form>
+          </div>
         </div>
       </div>
     </section>

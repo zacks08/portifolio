@@ -37,8 +37,8 @@ export default function About() {
           <div className="flex flex-col gap-3 text-muted-foreground">
             <div className="flex items-center gap-2">
               <Mail className="h-5 w-5 text-primary" />
-              <a href="mailto:isaac.dev.contato@gmail.com" className="hover:text-primary transition-colors">
-                isaac.dev.contato@gmail.com
+              <a href="mailto:isaac.dev.contato08@gmail.com" className="hover:text-primary transition-colors">
+                isaac.dev.contato08@gmail.com
               </a>
             </div>
             <div className="flex items-center gap-2">

@@ -251,8 +251,8 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 **Isaac** - *Full-Stack Developer & Entrepreneur*
 
-[![Email](https://img.shields.io/badge/Email-isaac.dev.contato@gmail.com-red?style=flat-square&logo=gmail&logoColor=white)](mailto:isaac.dev.contato@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/isaac)
+[![Email](https://img.shields.io/badge/Email-isaac.dev.contato08@gmail.com-red?style=flat-square&logo=gmail&logoColor=white)](mailto:isaac.dev.contato08@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/isaac-de-sousa-821780327/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=flat-square&logo=github&logoColor=white)](https://github.com/zacks08)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit-green?style=flat-square&logo=vercel&logoColor=white)](https://v0-isaac-portfolio.vercel.app)
 
