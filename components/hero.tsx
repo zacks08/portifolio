@@ -159,7 +159,7 @@ export default function Hero() {
           className={`mt-10 flex justify-center gap-4 transition-all duration-1000 delay-900 ${isVisible ? "opacity-100" : "opacity-0"}`}
         >
           <Button variant="ghost" size="icon" className="hover:scale-110 transition-transform" asChild>
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <a href="https://github.com/zacks08" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="h-5 w-5" />
             </a>
           </Button>
