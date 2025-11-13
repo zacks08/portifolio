@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { User, MapPin, Mail, Brain } from "lucide-react"
+import { User, MapPin, Mail, Brain, Phone } from "lucide-react"
 import { useInView } from "react-intersection-observer"
 import { useEffect, useState } from "react"
 
@@ -26,13 +26,14 @@ export default function About() {
       </h2>
       <div className={`grid md:grid-cols-2 gap-8 ${inView ? "animate-in" : "opacity-0"}`}>
         <div>
+          <h3 className="text-2xl font-semibold mb-4 text-primary">Perfil Profissional</h3>
           <p className="text-lg mb-6">
-            Sou o Isaac, estudante técnico em Informática, com espírito empreendedor e foco em soluções criativas. Já
-            liderei projetos escolares e startups, gosto de resolver problemas reais com tecnologia.
+            Sou desenvolvedor Back-End com experiência em Laravel 12, Node.js, React e Next.js, atuando no
+            desenvolvimento de sistemas completos, integrações de APIs e otimização de desempenho.
           </p>
           <p className="text-lg mb-6">
-            Amo aprender constantemente, valorizo saúde física e mental, e sou movido por metas e desafios. Minha paixão
-            está na interseção entre tecnologia, design e inovação.
+            Tenho perfil de liderança, pensamento analítico e facilidade para trabalhar com metodologias ágeis. Busco
+            sempre aprimorar meus conhecimentos e aplicar tecnologia para resolver problemas reais de forma eficiente.
           </p>
           <div className="flex flex-col gap-3 text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -42,12 +43,30 @@ export default function About() {
               </a>
             </div>
             <div className="flex items-center gap-2">
+              <Phone className="h-5 w-5 text-primary" />
+              <a href="tel:+5585985377239" className="hover:text-primary transition-colors">
+                (85) 98537-7239
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
               <MapPin className="h-5 w-5 text-primary" />
               <span>Fortaleza - CE, Brasil</span>
             </div>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Card className="sm:col-span-2">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
+                <Brain className="h-5 w-5 text-primary" /> Objetivo
+              </h3>
+              <p>
+                Atuar na área de tecnologia e gestão, seja como Desenvolvedor Back-End, gerente de processos ou vendedor
+                de soluções tecnológicas. Busco crescer profissionalmente, aplicando meus conhecimentos técnicos e de
+                liderança para gerar resultados concretos e contribuir para o crescimento da empresa.
+              </p>
+            </CardContent>
+          </Card>
           <Card>
             <CardContent className="p-6">
               <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
@@ -66,17 +85,6 @@ export default function About() {
               <p>
                 Desenvolver habilidades técnicas e empreendedoras para transformar ideias em produtos reais e
                 escaláveis.
-              </p>
-            </CardContent>
-          </Card>
-          <Card className="sm:col-span-2">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
-                <Brain className="h-5 w-5 text-primary" /> Objetivos
-              </h3>
-              <p>
-                Concluir minha formação técnica com excelência, lançar projetos inovadores no mercado e continuar
-                aprendendo novas tecnologias para expandir meu conhecimento e impacto.
               </p>
             </CardContent>
           </Card>

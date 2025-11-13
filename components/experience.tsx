@@ -26,6 +26,36 @@ export default function Experience() {
 
   const experiences: Experience[] = [
     {
+      title: "Desenvolvedor Back-End",
+      company: "Sertanus Tecnologia",
+      period: "Agosto 2025 - Atual",
+      description: [
+        "Desenvolvimento de sistemas web com Laravel 12, Node.js e React",
+        "Criação de APIs REST, estruturação de banco de dados e otimização de performance",
+        "Participação em projetos colaborativos com foco em entregas rápidas e escaláveis",
+      ],
+    },
+    {
+      title: "Assistente Administrativo e Desenvolvedor de Processos",
+      company: "Fly Camisaria",
+      period: "Junho 2025 - Atual",
+      description: [
+        "Responsável pela folha de pagamento e automação de rotinas administrativas",
+        "Criação de scripts e sistemas internos para controle de ponto e cálculos salariais",
+        "Apoio nas estratégias digitais e gerenciamento do Instagram da marca",
+      ],
+    },
+    {
+      title: "Gerente de Pedidos e Desenvolvedor Interno",
+      company: "Restaurante Dona Nia",
+      period: "Novembro 2025 - Atual",
+      description: [
+        "Controle e organização dos pedidos da cozinha, entregas e consumo local",
+        "Desenvolvimento de soluções digitais para gestão de pedidos e relatórios operacionais",
+        "Coordenação de equipe e melhoria de processos com foco em eficiência e experiência do cliente",
+      ],
+    },
+    {
       title: "Líder de startup escolar",
       company: "Armoni",
       period: "2024 - 2025",
@@ -34,17 +64,6 @@ export default function Experience() {
         "Desenvolvimento do app/site e teste com usuários",
         "Design de UI/UX e integração com IA",
         "Apresentação do projeto em feiras e eventos",
-      ],
-    },
-    {
-      title: "Liderança em projetos escolares",
-      company: "EEEP Paulo Petrola",
-      period: "2023 - 2025",
-      description: [
-        "Gestão de equipes em projetos tecnológicos",
-        "Desenvolvimento de soluções inovadoras",
-        "Apresentações e prototipagem de produtos",
-        "Coordenação de atividades e prazos",
       ],
     },
   ]

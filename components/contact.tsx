@@ -40,7 +40,6 @@ export default function Contact() {
     setIsSubmitting(true)
 
     try {
-      // Configuração do EmailJS
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -49,14 +48,7 @@ export default function Contact() {
         reply_to: formData.email,
       }
 
-      // Enviar o email usando EmailJS
-      // Você precisará substituir estes IDs pelos seus próprios do EmailJS
-      const response = await emailjs.send(
-        "service_emailjs", // ID do serviço (você precisará criar)
-        "template_contact", // ID do template (você precisará criar)
-        templateParams,
-        "YOUR_PUBLIC_KEY", // Chave pública do EmailJS (você precisará obter)
-      )
+      const response = await emailjs.send("service_emailjs", "template_contact", templateParams, "YOUR_PUBLIC_KEY")
 
       if (response.status === 200) {
         toast({
@@ -94,7 +86,6 @@ export default function Contact() {
       </div>
 
       <div className={`max-w-6xl mx-auto ${inView ? "animate-in" : "opacity-0"}`}>
-        {/* Cards de contato */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <div className="bg-background/50 backdrop-blur-sm rounded-lg p-6 text-center border border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105">
             <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -126,6 +117,72 @@ export default function Contact() {
           </div>
         </div>
 
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-background/50 backdrop-blur-sm rounded-xl p-8 border border-border/50 shadow-xl">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium">
+                    Nome
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Seu nome"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="transition-all duration-300 focus:scale-[1.02]"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="seu.email@exemplo.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="transition-all duration-300 focus:scale-[1.02]"
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium">
+                  Mensagem
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Sua mensagem..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  className="resize-none transition-all duration-300 focus:scale-[1.01]"
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" /> Enviar Mensagem
+                  </>
+                )}
+              </Button>
+            </form>
 
             <div className="mt-6 pt-6 border-t border-border/50 text-center">
               <p className="text-sm text-muted-foreground">

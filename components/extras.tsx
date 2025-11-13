@@ -2,7 +2,7 @@
 
 import { useInView } from "react-intersection-observer"
 import { useEffect, useState } from "react"
-import { Award, BookOpen, Heart } from "lucide-react"
+import { Award, BookOpen, Heart, GraduationCap, Languages } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -45,11 +45,7 @@ export default function Extras() {
     },
   ]
 
-  const courses = [
-    "JavaScript ",
-    "React: Componentes e Hooks",
-    "Banco de Dados Relacionais e NoSQL",
-  ]
+  const courses = ["JavaScript", "React: Componentes e Hooks", "Banco de Dados Relacionais e NoSQL"]
 
   const hobbies = ["Saúde e nutrição", "Musculação", "Estudo de IA e startups", "Desenvolvimento de ideias inovadoras"]
 
@@ -61,12 +57,35 @@ export default function Extras() {
         <BookOpen className="h-6 w-6 text-primary" /> Extras
       </h2>
       <div className={`${inView ? "animate-in" : "opacity-0"}`}>
-        <Tabs defaultValue="certifications">
-          <TabsList className="grid grid-cols-3 mb-6">
+        <Tabs defaultValue="education" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-6">
+            <TabsTrigger value="education">Formação</TabsTrigger>
             <TabsTrigger value="certifications">Certificações</TabsTrigger>
             <TabsTrigger value="courses">Cursos</TabsTrigger>
+            <TabsTrigger value="languages">Idiomas</TabsTrigger>
             <TabsTrigger value="hobbies">Hobbies</TabsTrigger>
           </TabsList>
+          <TabsContent value="education">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <GraduationCap className="h-5 w-5 text-primary" /> Formação Acadêmica
+                </CardTitle>
+                <CardDescription>Minha trajetória educacional</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="border-l-2 border-primary pl-4">
+                  <h4 className="font-semibold text-primary">Curso Técnico em Informática</h4>
+                  <p className="text-sm text-muted-foreground">EEEP Paulo Petrola</p>
+                  <p className="text-xs text-muted-foreground mb-2">Janeiro 2023 - Dezembro 2025</p>
+                  <p className="text-sm">
+                    Formação técnica completa em desenvolvimento de sistemas, banco de dados, redes e infraestrutura de
+                    TI.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
           <TabsContent value="certifications">
             <Card>
               <CardHeader>
@@ -103,6 +122,32 @@ export default function Extras() {
                     <li key={index}>{course}</li>
                   ))}
                 </ul>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="languages">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Languages className="h-5 w-5 text-primary" /> Idiomas
+                </CardTitle>
+                <CardDescription>Minhas habilidades linguísticas</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
+                    <span className="font-medium">Português</span>
+                    <span className="text-sm text-primary">Nativo</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
+                    <span className="font-medium">Inglês</span>
+                    <span className="text-sm text-muted-foreground">Básico</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
+                    <span className="font-medium">Espanhol</span>
+                    <span className="text-sm text-muted-foreground">Básico</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
